@@ -30,7 +30,7 @@ def run_spade_analysis(uploaded_file, min_sup, min_conf, min_lift):
             f.write(" -1 ".join(transaction) + " -1 -2\n")
 
     # Menjalankan algoritma SPADE
-    spmf = Spmf("SPADE", input_filename="data_spmf.txt", output_filename="output_spade.txt", spmf_bin_location_dir="C:/spmf", arguments=[min_sup])
+    spmf = Spmf("SPADE", input_filename="data_spmf.txt", output_filename="output_spade.txt", spmf_bin_location_dir="spmf", arguments=[min_sup])
     spmf.run()
 
     # Membaca hasil analisis
