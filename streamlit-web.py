@@ -6,7 +6,7 @@ from spmf import Spmf
 
 # Menentukan lokasi Java secara eksplisit
 def set_java_path():
-    java_path = "C:\\Program Files\\Java\\jdk-23\\bin"  # Ubah path ini sesuai dengan instalasi Java Anda
+    java_path = "C:\Program Files\Java\jdk-23\bin"  # Ubah path ini sesuai dengan instalasi Java Anda
     if os.name == "nt":  # Jika menggunakan Windows
         os.environ["PATH"] = f"{java_path};" + os.environ["PATH"]
     else:
