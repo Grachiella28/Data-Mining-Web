@@ -50,21 +50,34 @@ def run_spade_analysis(uploaded_file, min_sup, min_conf, min_lift):
 
     filtered_patterns = []
     conclusions = []
+    item_mapping = {
+    1: "Bacaros",
+    2: "Je Premium",
+    3: "Armor",
+    4: "Oel Steel",
+    5: "Boss Ar",
+    6: "Fortune",
+    7: "Haizelia"
+}
+    
     for pattern in pattern_supports:
         if len(pattern["items"]) == 2:
-            item_a, item_b = pattern["items"]
+            item_1, item_2 = pattern["items"]
             support_ab = pattern["support"]
 
-            support_a = next((p["support"] for p in pattern_supports if p["items"] == [item_a]), 0)
-            support_b = next((p["support"] for p in pattern_supports if p["items"] == [item_b]), 0)
+            support_a = next((p["support"] for p in pattern_supports if p["items"] == [item_1]), 0)
+            support_b = next((p["support"] for p in pattern_supports if p["items"] == [item_2]), 0)
 
             confidence = support_ab / support_a if support_a != 0 else 0
             lift = confidence / (support_b / total_transactions) if support_b != 0 else 0
 
+            item_a = item_mapping.get(item_1)
+            item_b = item_mapping.get(item_2)
+
             if confidence >= min_conf and lift >= min_lift:
                 conclusion_text = (
-                    f"Jika seseorang membeli item {item_a}, kemungkinan besar mereka juga akan membeli item {item_b} "
-                    f"dengan kepercayaan {round(confidence * 100, 2)}% dan hubungan yang kuat (lift: {round(lift, 2)})."
+                     f"Jika parfum {item_a} terjual terbanyak dalam 1 hari maka, kemungkinan besar pembeli akan membeli parfum {item_b} "
+                     f"dengan keyakinan sebesar {round(confidence * 100, 2)}% dan hubungan sebesar (lift: {round(lift, 2)})."
                 )
                 filtered_patterns.append({
                     "Pola Aturan": f"{item_a} -> {item_b}",
