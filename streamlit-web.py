@@ -77,7 +77,7 @@ def run_spade_analysis(uploaded_file, min_sup, min_conf, min_lift):
             if confidence >= min_conf and lift >= min_lift:
                 conclusion_text = (
                      f"Jika parfum {item_a} terjual terbanyak dalam 1 hari maka, kemungkinan besar pembeli akan membeli parfum {item_b} "
-                     f"dengan keyakinan sebesar {round(confidence * 100, 2)}% dan hubungan sebesar (lift: {round(lift, 2)})."
+                     f"dengan keyakinan sebesar {round(confidence, 2) * 100}% dan hubungan sebesar (lift: {round(lift, 2)})."
                 )
                 filtered_patterns.append({
                     "Pola Aturan": f"{item_a} -> {item_b}",
