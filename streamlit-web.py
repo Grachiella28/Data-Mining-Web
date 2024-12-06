@@ -118,4 +118,4 @@ if uploaded_file:
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     )
             except Exception as e:
-                st.error(f"Terjadi kesalahan: {e}") 
+                st.error(f"Terjadi kesalahan: {e}")
