@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 from spmf import Spmf
 
-# Menentukan lokasi Java secara eksplisit
+# Menentukan lokasi Java secara eksplisitr
 def set_java_path():
     java_path = "C:\Program Files\Java\jdk-23\bin"  # Ubah path ini sesuai dengan instalasi Java Anda
     if os.name == "nt":  # Jika menggunakan Windows
