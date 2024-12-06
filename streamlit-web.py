@@ -1,25 +1,6 @@
-import os
-import subprocess
 import streamlit as st
 import pandas as pd
 from spmf import Spmf
-
-# Menentukan lokasi Java secara eksplisitr
-def set_java_path():
-    java_path = "C:\Program Files\Java\jdk-23\bin"  # Ubah path ini sesuai dengan instalasi Java Anda
-    if os.name == "nt":  # Jika menggunakan Windows
-        os.environ["PATH"] = f"{java_path};" + os.environ["PATH"]
-    else:
-        raise EnvironmentError("Skrip ini dirancang untuk sistem Windows.")
-
-# Verifikasi instalasi Java
-def verify_java_installation():
-    try:
-        result = subprocess.run(["java", "-version"], capture_output=True, text=True)
-        if result.returncode != 0:
-            raise EnvironmentError("Java tidak ditemukan di sistem.")
-    except FileNotFoundError:
-        raise EnvironmentError("Java tidak ditemukan di PATH. Pastikan Java sudah terinstal.")
 
 # Fungsi untuk menjalankan analisis SPADE
 def run_spade_analysis(uploaded_file, min_sup, min_conf, min_lift):
@@ -99,9 +80,6 @@ def run_spade_analysis(uploaded_file, min_sup, min_conf, min_lift):
     return output_df, conclusions
 
 # Streamlit UI
-set_java_path()
-verify_java_installation()
-
 st.title("Analisis Tren Penjualan Parfum")
 st.subheader("Unggah file Excel untuk memulai analisis")
 
@@ -140,4 +118,4 @@ if uploaded_file:
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     )
             except Exception as e:
-                st.error(f"Terjadi kesalahan: {e}")
+                st.error(f"Terjadi kesalahan: {e}") 
